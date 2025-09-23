@@ -1,0 +1,1053 @@
+/* Daily AI Challenge Styles - Built on Modern Design System */
+
+/* Import the base design system */
+@import url('./index.css');
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    color: var(--color-foreground);
+    background-color: var(--color-background);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Cloud-like gradient overlay */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 20% 20%, rgba(139, 92, 246, 0.25) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.25) 0%, transparent 50%),
+        radial-gradient(circle at 40% 60%, rgba(168, 85, 247, 0.2) 0%, transparent 60%),
+        radial-gradient(circle at 60% 40%, rgba(99, 102, 241, 0.2) 0%, transparent 60%),
+        radial-gradient(circle at 10% 70%, rgba(139, 92, 246, 0.15) 0%, transparent 70%),
+        radial-gradient(circle at 90% 30%, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
+    z-index: -2;
+    animation: cloudFloat 25s ease-in-out infinite;
+}
+
+/* Honeycomb pattern overlay */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        /* First honeycomb layer */
+        linear-gradient(30deg, transparent 24%, rgba(139, 92, 246, 0.12) 25%, rgba(139, 92, 246, 0.12) 26%, transparent 27%, transparent 74%, rgba(139, 92, 246, 0.12) 75%, rgba(139, 92, 246, 0.12) 76%, transparent 77%),
+        /* Second honeycomb layer offset */
+        linear-gradient(-30deg, transparent 24%, rgba(59, 130, 246, 0.1) 25%, rgba(59, 130, 246, 0.1) 26%, transparent 27%, transparent 74%, rgba(59, 130, 246, 0.1) 75%, rgba(59, 130, 246, 0.1) 76%, transparent 77%),
+        /* Third honeycomb layer for depth */
+        linear-gradient(90deg, transparent 24%, rgba(168, 85, 247, 0.08) 25%, rgba(168, 85, 247, 0.08) 26%, transparent 27%, transparent 74%, rgba(168, 85, 247, 0.08) 75%, rgba(168, 85, 247, 0.08) 76%, transparent 77%);
+    background-size: 80px 80px, 80px 80px, 80px 80px;
+    background-position: 0 0, 40px 40px, 20px 20px;
+    z-index: -1;
+    animation: honeycombFloat 30s ease-in-out infinite;
+}
+
+/* Cloud floating animation */
+@keyframes cloudFloat {
+    0%, 100% {
+        transform: translateX(0px) translateY(0px) scale(1);
+        opacity: 0.6;
+    }
+    25% {
+        transform: translateX(10px) translateY(-5px) scale(1.02);
+        opacity: 0.8;
+    }
+    50% {
+        transform: translateX(-5px) translateY(-10px) scale(0.98);
+        opacity: 0.7;
+    }
+    75% {
+        transform: translateX(-10px) translateY(5px) scale(1.01);
+        opacity: 0.9;
+    }
+}
+
+/* Honeycomb floating animation */
+@keyframes honeycombFloat {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+        opacity: 0.4;
+    }
+    33% {
+        transform: translateY(-8px) rotate(0.3deg);
+        opacity: 0.6;
+    }
+    66% {
+        transform: translateY(4px) rotate(-0.2deg);
+        opacity: 0.5;
+    }
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--color-foreground);
+}
+
+/* Layout */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section {
+    padding: 80px 0;
+}
+
+.columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.three-columns {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    text-align: center;
+}
+
+.six-columns {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
+    align-items: center;
+}
+
+/* Header */
+.header {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--color-border);
+    background-color: var(--color-background);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.dark-mode-toggle {
+    background: var(--color-muted);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1rem;
+}
+
+.dark-mode-toggle:hover {
+    background: var(--color-accent);
+    color: var(--color-accent-foreground);
+}
+
+.dark-mode-toggle .moon-icon {
+    display: none;
+}
+
+.dark .dark-mode-toggle {
+    background: #374151 !important;
+    border: 1px solid #4B5563 !important;
+    color: #F9FAFB !important;
+}
+
+.dark .dark-mode-toggle:hover {
+    background: #4B5563 !important;
+}
+
+.dark .dark-mode-toggle .sun-icon {
+    display: none;
+}
+
+.dark .dark-mode-toggle .moon-icon {
+    display: inline;
+}
+
+.logo {
+    font-size: 1.875rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    font-family: var(--font-sans);
+}
+
+/* Hero Section */
+.hero {
+    background: var(--color-background);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.hero-left {
+    position: relative;
+}
+
+.boarding-pass {
+    background: var(--color-card);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    margin-bottom: 15px;
+    overflow: hidden;
+    position: relative;
+    width: 280px;
+    border: 1px solid var(--color-border);
+}
+
+.boarding-pass-header {
+    background: var(--color-muted);
+    padding: 15px;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.airline-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.airline-logo {
+    width: 20px;
+    height: 20px;
+    background: var(--color-primary);
+    border-radius: var(--radius-sm);
+    margin-right: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-primary-foreground);
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.airline-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-primary);
+}
+
+.flight-info {
+    font-size: 0.75rem;
+    color: var(--color-muted-foreground);
+    margin-bottom: 8px;
+}
+
+.passenger-info {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-card-foreground);
+}
+
+.passenger-label {
+    font-size: 0.5rem;
+    color: var(--color-muted-foreground);
+    text-transform: uppercase;
+    letter-spacing: 0.05rem;
+}
+
+.boarding-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 12px;
+}
+
+.detail-item {
+    text-align: center;
+}
+
+.detail-value {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-card-foreground);
+}
+
+.detail-label {
+    font-size: 0.5rem;
+    color: var(--color-muted-foreground);
+    text-transform: uppercase;
+    letter-spacing: 0.05rem;
+}
+
+.boarding-pass-footer {
+    background: var(--color-primary);
+    padding: 15px;
+    color: var(--color-primary-foreground);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.route-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.airport {
+    text-align: center;
+}
+
+.airport-code {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.airport-name {
+    font-size: 0.625rem;
+    opacity: 0.9;
+}
+
+.qr-code {
+    width: 50px;
+    height: 50px;
+    background: var(--color-primary-foreground);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.625rem;
+    color: var(--color-primary);
+}
+
+.add-to-wallet {
+    background: var(--color-accent);
+    color: var(--color-accent-foreground);
+    border: none;
+    padding: 6px 12px;
+    border-radius: var(--radius-sm);
+    font-size: 0.625rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.add-to-wallet:hover {
+    background: var(--color-accent);
+    opacity: 0.9;
+}
+
+.hero-right {
+    text-align: center;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    animation: gradualBlur 0.8s ease-out;
+}
+
+@keyframes gradualBlur {
+    0% {
+        filter: blur(10px);
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    50% {
+        filter: blur(5px);
+        opacity: 0.5;
+        transform: translateY(10px);
+    }
+    100% {
+        filter: blur(0px);
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-title {
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    line-height: 1.1;
+    margin-bottom: 30px;
+    font-family: var(--font-sans);
+    animation: fadeInUp 1s ease-out 0.2s both;
+}
+
+.accent-text {
+    color: var(--color-accent);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* Rotating text container */
+.rotating-text-container {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    min-width: 200px;
+    height: 1.2em;
+    vertical-align: top;
+}
+
+/* Rotating text styles */
+.text-rotate {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+}
+
+.text-rotate-sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.text-rotate-word {
+    display: inline-block;
+    overflow: hidden;
+}
+
+.text-rotate-element {
+    display: inline-block;
+    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease;
+}
+
+.text-rotate-space {
+    display: inline-block;
+    width: 0.25em;
+}
+
+.text-rotate-lines {
+    display: block;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 0.9;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-subtitle {
+    font-size: 1.125rem;
+    color: var(--color-secondary);
+    font-weight: 400;
+    margin-bottom: 40px;
+    line-height: 1.5;
+    animation: fadeInUp 1s ease-out 0.4s both;
+}
+
+.hero-subtitle mark {
+    background-color: var(--color-background);
+    font-weight: 600;
+    color: var(--color-primary);
+}
+
+.cta-button {
+    background: var(--color-primary);
+    color: var(--color-primary-foreground);
+    border: none;
+    padding: 16px 32px;
+    border-radius: var(--radius-lg);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-md);
+    min-width: 200px;
+    animation: fadeInUp 1s ease-out 0.6s both;
+}
+
+.cta-button:hover {
+    background: var(--color-primary);
+    opacity: 0.9;
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Dark mode specific button styling */
+.dark .cta-button {
+    background: #6B46C1 !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 14px rgba(107, 70, 193, 0.3) !important;
+}
+
+.dark .cta-button:hover {
+    background: #5B21B6 !important;
+    box-shadow: 0 6px 20px rgba(107, 70, 193, 0.4) !important;
+}
+
+.disclaimer {
+    font-size: 0.75rem;
+    color: var(--color-muted-foreground);
+    animation: fadeInUp 1s ease-out 0.8s both;
+}
+
+.chevron-down {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.chevron-down svg {
+    width: 24px;
+    height: 24px;
+    fill: var(--color-primary);
+}
+
+/* Stats Section */
+.stats-section {
+    text-align: center;
+    padding: 100px 0;
+    background: var(--color-background);
+}
+
+.stats-title {
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    line-height: 1.1;
+    margin-bottom: 60px;
+}
+
+.stats-title mark {
+    color: var(--color-accent);
+    background-color: var(--color-background);
+}
+
+.company-logos {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 40px;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.company-logo {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+    color: var(--color-muted-foreground);
+}
+
+.company-logo:hover {
+    opacity: 1;
+    color: var(--color-foreground);
+}
+
+/* Testimonials */
+.testimonials-section {
+    background: var(--color-muted);
+    padding: 100px 0;
+}
+
+.testimonials-title {
+    text-align: center;
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 60px;
+    line-height: 1.1;
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+}
+
+.testimonial {
+    text-align: center;
+}
+
+.testimonial-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: var(--color-border);
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+}
+
+.testimonial-quote {
+    font-size: 1rem;
+    color: var(--color-foreground);
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.testimonial-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 5px;
+}
+
+.testimonial-title {
+    font-size: 0.875rem;
+    color: var(--color-muted-foreground);
+}
+
+/* Features Section */
+.features-section {
+    padding: 100px 0;
+    text-align: center;
+    background: var(--color-background);
+}
+
+.features-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 60px;
+    line-height: 1.1;
+}
+
+.features-title span:nth-child(odd) {
+    color: var(--color-accent);
+}
+
+.features-title span:nth-child(even) {
+    color: var(--color-primary);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 60px;
+}
+
+.feature {
+    text-align: center;
+}
+
+.feature-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.feature-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 15px;
+}
+
+.feature-description {
+    font-size: 1rem;
+    color: var(--color-muted-foreground);
+    line-height: 1.6;
+}
+
+/* CTA Section */
+.cta-section {
+    background: var(--color-muted);
+    padding: 100px 0;
+    text-align: center;
+}
+
+.cta-title {
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 20px;
+    line-height: 1.1;
+}
+
+.cta-subtitle {
+    font-size: 1.125rem;
+    color: var(--color-muted-foreground);
+    margin-bottom: 40px;
+    line-height: 1.5;
+    font-weight: 400;
+}
+
+.email-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.email-input {
+    padding: 16px 20px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    font-size: 1rem;
+    width: 100%;
+    max-width: 400px;
+    background: var(--color-background);
+    color: var(--color-foreground);
+    transition: border-color 0.3s ease;
+}
+
+.email-input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 2px var(--color-ring);
+}
+
+.submit-button {
+    background: var(--color-primary);
+    color: var(--color-primary-foreground);
+    border: none;
+    padding: 16px 32px;
+    border-radius: var(--radius-lg);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-md);
+    min-width: 150px;
+}
+
+.submit-button:hover {
+    background: var(--color-primary);
+    opacity: 0.9;
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Dark mode specific submit button styling */
+.dark .submit-button {
+    background: #6B46C1 !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 14px rgba(107, 70, 193, 0.3) !important;
+}
+
+.dark .submit-button:hover {
+    background: #5B21B6 !important;
+    box-shadow: 0 6px 20px rgba(107, 70, 193, 0.4) !important;
+}
+
+/* Footer */
+.footer {
+    background: var(--color-card);
+    color: var(--color-card-foreground);
+    padding: 60px 0 30px;
+    border-top: 1px solid var(--color-border);
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-section h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 15px;
+}
+
+.footer-section p {
+    font-size: 0.875rem;
+    color: var(--color-muted-foreground);
+    line-height: 1.5;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.social-link {
+    width: 40px;
+    height: 40px;
+    background: var(--color-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-primary-foreground);
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.social-link:hover {
+    background: var(--color-primary);
+    opacity: 0.9;
+}
+
+.footer-bottom {
+    border-top: 1px solid var(--color-border);
+    padding-top: 30px;
+    text-align: center;
+    font-size: 0.875rem;
+    color: var(--color-muted-foreground);
+}
+
+.footer-bottom a {
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+.footer-bottom a:hover {
+    text-decoration: underline;
+}
+
+/* Dark Mode Specific Adjustments */
+.dark {
+    --color-background: oklch(0.2303 0.0125 264.2926);
+    --color-foreground: oklch(0.9219 0 0);
+    --color-card: oklch(0.3210 0.0078 223.6661);
+    --color-card-foreground: oklch(0.9219 0 0);
+    --color-muted: oklch(0.3867 0 0);
+    --color-muted-foreground: oklch(0.7155 0 0);
+    --color-border: oklch(0.3867 0 0);
+}
+
+/* Dark mode background effects */
+.dark body::before {
+    background-image: 
+        radial-gradient(circle at 20% 20%, rgba(139, 92, 246, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 40% 60%, rgba(168, 85, 247, 0.15) 0%, transparent 60%),
+        radial-gradient(circle at 60% 40%, rgba(99, 102, 241, 0.15) 0%, transparent 60%),
+        radial-gradient(circle at 10% 70%, rgba(139, 92, 246, 0.12) 0%, transparent 70%),
+        radial-gradient(circle at 90% 30%, rgba(59, 130, 246, 0.12) 0%, transparent 70%);
+}
+
+.dark body::after {
+    background-image: 
+        linear-gradient(30deg, transparent 24%, rgba(139, 92, 246, 0.12) 25%, rgba(139, 92, 246, 0.12) 26%, transparent 27%, transparent 74%, rgba(139, 92, 246, 0.12) 75%, rgba(139, 92, 246, 0.12) 76%, transparent 77%),
+        linear-gradient(-30deg, transparent 24%, rgba(59, 130, 246, 0.1) 25%, rgba(59, 130, 246, 0.1) 26%, transparent 27%, transparent 74%, rgba(59, 130, 246, 0.1) 75%, rgba(59, 130, 246, 0.1) 76%, transparent 77%),
+        linear-gradient(90deg, transparent 24%, rgba(168, 85, 247, 0.08) 25%, rgba(168, 85, 247, 0.08) 26%, transparent 27%, transparent 74%, rgba(168, 85, 247, 0.08) 75%, rgba(168, 85, 247, 0.08) 76%, transparent 77%);
+}
+
+/* Force dark mode styles for testing */
+.dark body {
+    color: #ffffff !important;
+}
+
+.dark .hero {
+    background-color: transparent !important;
+}
+
+.dark .hero-title {
+    color: #ffffff !important;
+    font-weight: 700 !important;
+}
+
+.dark .hero-subtitle {
+    color: #E5E7EB !important;
+}
+
+.dark .hero-subtitle mark {
+    background-color: transparent !important;
+    color: #A78BFA !important;
+    font-weight: 600 !important;
+}
+
+.dark .disclaimer {
+    color: #9CA3AF !important;
+}
+
+/* Modern card styling for dark mode */
+.dark .boarding-pass {
+    background: #1F2937 !important;
+    border: 1px solid #374151 !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3) !important;
+}
+
+.dark .boarding-pass-header {
+    background: #111827 !important;
+    border-bottom: 1px solid #374151 !important;
+}
+
+.dark .airline-name {
+    color: #A78BFA !important;
+}
+
+.dark .passenger-info {
+    color: #F9FAFB !important;
+}
+
+.dark .detail-value {
+    color: #F9FAFB !important;
+}
+
+.dark .boarding-pass-footer {
+    background: #6B46C1 !important;
+}
+
+.dark .boarding-pass {
+    box-shadow: var(--shadow-xl);
+}
+
+.dark .cta-button {
+    box-shadow: var(--shadow-lg);
+}
+
+.dark .email-input {
+    background: var(--color-card);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .columns {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .three-columns {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .six-columns {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .testimonials-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .email-form {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .email-input {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .stats-title {
+        font-size: 2.5rem;
+    }
+
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .six-columns {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Animation and Transitions */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.boarding-pass {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.boarding-pass:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+/* Focus states for accessibility */
+.cta-button:focus,
+.submit-button:focus,
+.add-to-wallet:focus {
+    outline: 2px solid var(--color-ring);
+    outline-offset: 2px;
+}
+
+.email-input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 2px var(--color-ring);
+}
