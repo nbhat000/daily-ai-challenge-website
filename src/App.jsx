@@ -5,7 +5,7 @@ import { initScrollAnimations } from './utils/scrollObserver';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Stats from './components/Stats';
-import Testimonials from './components/Testimonials';
+import ValuePropositions from './components/ValuePropositions';
 import Features from './components/Features';
 import CTA from './components/CTA';
 import Footer from './components/Footer';
@@ -22,7 +22,7 @@ function App() {
                 <Header />
                 <Hero />
                 <Stats />
-                <Testimonials />
+                <ValuePropositions />
                 <Features />
                 <CTA />
                 <Footer />

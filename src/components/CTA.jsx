@@ -6,7 +6,7 @@ const CTA = () => {
             <div className="container">
                 <h2 className="cta-title">Become a Better AI Developer</h2>
                 <p className="cta-subtitle">
-                    Daily AI is a series of daily design challenges, design inspiration and neat surprise rewards.
+                    Daily AI is a series of daily AI dev challenges, AI dev inspiration and neat surprise rewards.
                     Oh, and it's 100% free. Pretty cool, huh?
                 </p>
                 <form className="email-form">
