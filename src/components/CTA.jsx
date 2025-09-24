@@ -13,7 +13,7 @@ const CTA = () => {
                     <input type="email" placeholder="Enter your email" className="email-input" />
                     <button type="submit" className="submit-button">Get Started</button>
                 </form>
-                <p className="disclaimer">No Spam. No Affiliate Links. No data sharing.</p>
+                <p className="disclaimer">No Spam. No data sharing.</p>
             </div>
         </section>
     );

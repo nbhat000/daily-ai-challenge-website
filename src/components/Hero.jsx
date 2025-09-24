@@ -137,10 +137,10 @@ const Hero = () => {
                                 <div className="hero-title-line-3">in 30 Days</div>
                             </h1>
                             <p className="hero-subtitle">
-                                Daily AI is a series of <mark>AI Challenges</mark> and <mark>Surprise Rewards</mark> sent out every day.
+                                Daily AI is a series of <mark>AI Challenges</mark> sent out every day, designed to build the skills and portfolio you need to become a confident developer in the age of AI.
                             </p>
                             <button type="button" className="submit-button" onClick={() => document.getElementById('signup').scrollIntoView({ behavior: 'smooth' })}>Start the Challenge for Free</button>
-                            <p className="disclaimer">No Spam. No Affiliates. No Data Sharing.</p>
+                            <p className="disclaimer">No Spam. No Data Sharing.</p>
                         </div>
                     </div>
                 </div>
