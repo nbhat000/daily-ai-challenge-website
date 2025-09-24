@@ -1635,9 +1635,6 @@ h1, h2, h3, h4, h5, h6 {
         text-align: center !important;
     }
     
-    .social-icons {
-        justify-content: center !important;
-    }
 
     .email-form {
         flex-direction: column;
@@ -1805,9 +1802,6 @@ h1, h2, h3, h4, h5, h6 {
         text-align: center !important;
     }
     
-    .social-icons {
-        justify-content: center !important;
-    }
 }
 
 
