@@ -173,8 +173,17 @@ h1, h2, h3, h4, h5, h6 {
 .logo {
     font-size: 1.875rem;
     font-weight: 600;
-    color: var(--primary);
+    color: #8b5cf6;
     font-family: var(--font-sans);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-image {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
 }
 
 /* Hero Section */
